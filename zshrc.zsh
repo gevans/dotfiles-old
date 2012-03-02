@@ -21,7 +21,7 @@ export EDITOR="subl -w"
 # alias ls="ls -G"
 #alias git="hub"
 #hub alias -s zsh
-function git() { hub "$@" }
+function git() { hub "$@"; }
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -41,7 +41,7 @@ function git() { hub "$@" }
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew bundler gem git-flow heroku rvm vagrant projects)
+plugins=(git bundler gem git-flow heroku rvm vagrant projects)
 
 PLATFORM=`uname`
 
@@ -54,13 +54,20 @@ fi
 # Load platform-specific configurations
 [[ -s "$DOTFILES/platforms/$PLATFORM.zsh" ]] && source "$DOTFILES/platforms/$PLATFORM.zsh"
 
+# Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
-
-__rvm_project_rvmrc
 
 # Override upgrade_oh_my_zsh to pull upstream changes
 function upgrade_oh_my_zsh() {
   /usr/bin/env ZSH=$ZSH /bin/sh $DOTFILES/tools/upgrade.sh
 }
+
+# Load user RVM
+if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
+  source "$HOME/.rvm/scripts/rvm"
+# Fallback to system-wide install
+elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
+  source /usr/local/rvm/scripts/rvm
+fi
+
+__rvm_project_rvmrc
