@@ -10,10 +10,13 @@ ZSH=$DOTFILES/oh-my-zsh
 ZSH_THEME="gevans"
 
 # Set executables PATH
-export PATH="$HOME/bin:$HOME/pear/bin:$PATH"
+export PATH="$HOME/bin:$HOME/pear/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Set editor
 export EDITOR="subl -w"
+
+# Set timezone
+export TZ="America/Los_Angeles"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -70,4 +73,15 @@ elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
   source /usr/local/rvm/scripts/rvm
 fi
 
+# Load NVM
+# if [[ -s "$HOME/.nvm/nvm.sh" ]] ; then
+#   export NVM_DIR="$HOME/.nvm"
+#   source "$HOME/.nvm/nvm.sh"
+# fi
+
 __rvm_project_rvmrc
+
+# Load private exports
+if [[ -s "$DOTFILES/exports.zsh" ]] ; then
+  source "$DOTFILES/exports.zsh"
+fi
