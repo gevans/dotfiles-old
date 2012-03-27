@@ -10,7 +10,7 @@ ZSH=$DOTFILES/oh-my-zsh
 ZSH_THEME="gevans"
 
 # Set executables PATH
-export PATH="$HOME/bin:$HOME/pear/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/bin:$HOME/pear/bin:$PATH"
 
 # Set editor
 export EDITOR="subl -w"
@@ -67,10 +67,12 @@ function upgrade_oh_my_zsh() {
 
 # Load user RVM
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
-  source "$HOME/.rvm/scripts/rvm"
+  PATH=$PATH:$HOME/.rvm/bin
+  # source "$HOME/.rvm/scripts/rvm"
 # Fallback to system-wide install
 elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
-  source /usr/local/rvm/scripts/rvm
+  PATH=$PATH:/usr/local/rvm/bin
+  # source /usr/local/rvm/scripts/rvm
 fi
 
 # Load NVM
