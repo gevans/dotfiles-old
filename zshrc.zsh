@@ -1,4 +1,4 @@
-export DOTFILES=$HOME/Code/dotfiles
+DOTFILES=$HOME/Code/dotfiles
 
 # Path to your oh-my-zsh configuration.
 ZSH=$DOTFILES/oh-my-zsh
@@ -9,11 +9,11 @@ ZSH=$DOTFILES/oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gevans"
 
-# Set executables PATH
-export PATH="$HOME/bin:$HOME/pear/bin:$PATH"
+# Set $HOME executables PATHs
+PATH="$HOME/bin:$HOME/pear/bin:$PATH"
 
 # Set editor
-export EDITOR="subl -w"
+export EDITOR="vim"
 
 # Set timezone
 export TZ="America/Los_Angeles"
@@ -41,10 +41,15 @@ function git() { hub "$@"; }
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
+# Add zsh-completions
+# Note: You may also need to force rebuild `zcompdump`:
+#   $ rm -f ~/.zcompdump; compinit
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git bundler gem git-flow heroku rvm vagrant projects)
+plugins=(git bundler gem git-flow heroku vagrant projects eifion)
 
 PLATFORM=`uname`
 
@@ -65,23 +70,11 @@ function upgrade_oh_my_zsh() {
   /usr/bin/env ZSH=$ZSH /bin/sh $DOTFILES/tools/upgrade.sh
 }
 
-# Load user RVM
-if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
-  PATH=$PATH:$HOME/.rvm/bin
-  # source "$HOME/.rvm/scripts/rvm"
-# Fallback to system-wide install
-elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
-  PATH=$PATH:/usr/local/rvm/bin
-  # source /usr/local/rvm/scripts/rvm
-fi
+# Load rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-# Load NVM
-# if [[ -s "$HOME/.nvm/nvm.sh" ]] ; then
-#   export NVM_DIR="$HOME/.nvm"
-#   source "$HOME/.nvm/nvm.sh"
-# fi
-
-__rvm_project_rvmrc
+# Set node modules path
+NODE_PATH="/usr/local/lib/node_modules"
 
 # Load private exports
 if [[ -s "$DOTFILES/exports.zsh" ]] ; then
