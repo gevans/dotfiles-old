@@ -2,6 +2,7 @@
 #export NODE_PATH="/usr/local/lib/node_modules"
 
 alias ls="ls --color=auto"
+alias tmux="TERM=screen-256color-bce tmux"
 
 # Add rbenv to path
 PATH="$HOME/.rbenv/bin:$PATH"
