@@ -18,6 +18,9 @@ export EDITOR="vim"
 # Set timezone
 export TZ="America/Los_Angeles"
 
+# Disable oh-my-zsh title updating for tmux
+export DISABLE_AUTO_TITLE=true
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
