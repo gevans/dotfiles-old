@@ -1,14 +1,8 @@
 # Add osx plugin
 plugins+=(osx brew)
 
-# Source rbenv completions
-source "$(brew --prefix rbenv)/completions/rbenv.zsh"
-
 # Set PHP paths
-# export PATH="/usr/local/Cellar/php/5.3.11/bin:$HOME/pear/bin:$PATH"
-# export PATH="$HOME/pear/bin:$PATH"
-# # Add PHPEnv
-# export PATH="$PATH:/Users/gevans/.phpenv/bin"
+export PATH="$(brew --prefix php54)/bin:$PATH"
 
 # Set Apple Terminal.app resume directory
 if [[ $TERM_PROGRAM == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]] {
@@ -41,6 +35,3 @@ eval `gdircolors $DOTFILES/dircolors-solarized/dircolors.ansi-dark`
 # which is known to cause problems with "bash-completion".
 #
 # The man pages are still referenced with the g-prefix.
-
-# # Initialize PHPEnv
-# eval "$(phpenv init -)"
