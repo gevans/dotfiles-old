@@ -80,6 +80,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 NODE_PATH="/usr/local/lib/node_modules"
 
 # Load private exports
-if [[ -s "$DOTFILES/exports.zsh" ]] ; then
-  source "$DOTFILES/exports.zsh"
-fi
+[[ -s "$DOTFILES/exports.zsh" ]] && source "$DOTFILES/exports.zsh"
+
+# Load tmuxinator
+[[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]] && source "$HOME/.tmuxinator/scripts/tmuxinator"
