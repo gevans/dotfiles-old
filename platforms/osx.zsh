@@ -35,3 +35,8 @@ eval `gdircolors $DOTFILES/dircolors-solarized/dircolors.ansi-dark`
 # which is known to cause problems with "bash-completion".
 #
 # The man pages are still referenced with the g-prefix.
+
+# Skip forward/backward a word with opt-arrow
+# http://floatleft.com/notebook/mac-like-text-navigation-in-zsh
+bindkey '[C' forward-word
+bindkey '[D' backward-word
