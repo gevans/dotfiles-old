@@ -1,0 +1,23 @@
+##
+# OSX
+##
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+##
+# Tools & Software
+##
+
+# SublimeText project files
+/*.sublime-project
+
+# Vim
+.*.sw[a-z]
+*.un~
+Session.vim
