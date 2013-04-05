@@ -4,6 +4,9 @@ plugins+=(osx brew)
 # Set PHP paths
 export PATH="$(brew --prefix php54)/bin:$PATH"
 
+# Add Python package path
+export PATH="/usr/local/share/python:$PATH"
+
 # Set Apple Terminal.app resume directory
 if [[ $TERM_PROGRAM == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]] {
   function chpwd {
