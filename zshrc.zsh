@@ -9,6 +9,9 @@ ZSH=$DOTFILES/oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gevans"
 
+# Add npm executables
+PATH="/usr/local/share/npm/bin:$PATH"
+
 # Set $HOME executables PATHs
 PATH="$HOME/bin:$HOME/pear/bin:$PATH"
 
@@ -20,6 +23,9 @@ export TZ="America/Los_Angeles"
 
 # Disable oh-my-zsh title updating for tmux
 export DISABLE_AUTO_TITLE=true
+
+# Ensure Rubinius runs in 1.9 mode
+export RBXOPT=-X19
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -72,6 +78,8 @@ source $ZSH/oh-my-zsh.sh
 function upgrade_oh_my_zsh() {
   /usr/bin/env ZSH=$ZSH /bin/sh $DOTFILES/tools/upgrade.sh
 }
+
+source $DOTFILES/custom/git.zsh
 
 # Load rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
