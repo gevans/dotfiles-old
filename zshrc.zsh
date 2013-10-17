@@ -34,6 +34,7 @@ export RBXOPT=-X19
 #alias git="hub"
 #hub alias -s zsh
 function git() { hub "$@"; }
+function vagrant() { /usr/bin/vagrant "$@"; }
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
